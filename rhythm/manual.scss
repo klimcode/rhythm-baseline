@@ -1,0 +1,156 @@
+// 16px Vertical Rhytm based on paddings
+
+%rhytm_12 {
+  margin: 0 0 -3px;
+  padding: 19px 0 0;
+  font-size: 12px;
+  line-height: 16px;
+}
+%rhytm_12_low {
+  margin: 0 0 -3px;
+  padding: 3px 0 0;
+  font-size: 12px;
+  line-height: 16px;
+}
+%rhytm_14 {
+  margin: 0 0 -2px 0;
+  padding: 18px 0 0;
+  font-size: 14px;
+  line-height: 16px;
+}
+%rhytm_14_low {
+  margin: 0 0 -2px;
+  padding: 2px 0 0;
+  font-size: 14px;
+  line-height: 16px;
+}
+%rhytm_16 {
+  margin: 0;
+  padding: 25px 0 7px;
+  font-size: 16px;
+  line-height: 32px;
+}
+%rhytm_16_low {
+  padding: 0 0 7px;
+  margin: -7px 0 0;
+  font-size: 16px;
+  line-height: 32px;
+}
+%rhytm_18 {
+  margin: 0;
+  padding: 24px 0 8px;
+  font-size: 18px;
+  line-height: 32px;
+}
+%rhytm_20 {
+  margin: 0;
+  padding: 24px 0 8px;
+  font-size: 20px;
+  line-height: 32px;
+}
+%rhytm_20_64 {
+  margin: 0 0 -8px;
+  padding: 8px 0 0;
+  font-size: 20px;
+  line-height: 64px;
+}
+%rhytm_24 {
+  margin: 0;
+  padding: 22px 0 10px;
+  font-size: 24px;
+  line-height: 32px;
+}
+%rhytm_24_64 {
+  margin: 0 0 -6px;
+  padding: 6px 0 0;
+  font-size: 24px;
+  line-height: 64px;
+}
+%rhytm_32 {
+  margin: 0 0 -3px;
+  padding: 67px 0 0;
+  font-size: 32px;
+  line-height: 64px;
+}
+%rhytm_32_low {
+  margin: 0 0 -3px;
+  padding: 3px 0 0;
+  font-size: 32px;
+  line-height: 64px;
+}
+%rhytm_40 {
+  margin: 0;
+  padding: 64px 0 0;
+  font-size: 40px;
+  line-height: 64px;
+}
+%rhytm_40_low {
+  margin: 0;
+  padding: 0;
+  font-size: 40px;
+  line-height: 64px;
+}
+%rhytm_48 {
+  margin: 0;
+  padding: 61px 0 3px;
+  font-size: 48px;
+  line-height: 64px;
+}
+%rhytm_48_low {
+  margin: -3px 0 0;
+  padding: 0 0 3px;
+  font-size: 48px;
+  line-height: 64px;
+}
+%rhytm_56 {
+  margin: 0;
+  padding: 58px 0 6px;
+  font-size: 56px;
+  line-height: 64px;
+}
+%rhytm_56_low {
+  margin: -6px 0 0;
+  padding: 0 0 6px;
+  font-size: 56px;
+  line-height: 64px;
+}
+
+
+// extra elements
+%ruler {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px) left -1px / 16px 16px,
+    linear-gradient(rgba(0, 0, 0, 0.12) 1px, transparent 1px) left -1px / 64px 64px,
+    white;
+}
+
+%rhytm_hr_64 {
+  height: 1px;
+  border: 0;
+  border-top: 1px solid;
+  box-sizing: content-box; // correct box sizing in Firefox.
+  overflow: visible; // Show the overflow in Edge and IE
+  padding: 0;
+
+  margin: 32px 0 30px 0;
+}
+
+%rhytm_table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+%rhytm_table__td16 { // Default: 64px row height
+  padding: 25px 0 6px 0;
+  border-bottom: 1px solid #aaa;
+  font-size: 16px;
+  line-height: 32px;
+}
+%rhytm_table__td16_32px {
+  @extend %rhytm_table__td16;
+  padding: 0;
+  line-height: 31px;
+}
+%rhytm_table__td16_48px {
+  @extend %rhytm_table__td16;
+  padding: 9px 0 6px 0;
+}

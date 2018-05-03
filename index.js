@@ -8,13 +8,15 @@ const OPN = require('opn');
 const BRIEF = require('brief-async');
 const FILE = require('fs-handy-wraps');
 
+const TOOLS = require('./tools');
+
 const appDir = FILE.CWD;
 const userSettings = require(PATH.join(appDir, 'package.json')).stringifier;
 
 const defSettings = {
   input: 'input',
   output: 'rhythm',
-  outputFileName: 'metrics.scss',
+  outputFileName: 'baselines.scss',
   host: 'localhost',
   port: 8765,
   timeout: 300,
@@ -40,8 +42,8 @@ const startServer = function startServerAndOpenBrowser(args, resolve) {
   server.use(CORS({ credentials: true, origin: true }));
   server.post('/', (req, res) => {
     if (req.body) {
-      res.send('React Stringifier has done its job ⊙﹏⊙');
-      resolve(req.body.html);
+      res.send('Server got data ⊙﹏⊙');
+      resolve(req.body);
     }
   });
   server.listen(port, host);
@@ -52,13 +54,32 @@ const startServer = function startServerAndOpenBrowser(args, resolve) {
 
 const postProcess = function processInput(input, resolve) {
   log('POST message received');
-  const metrics = input;
+  const metrics = input.reduce((result, font) => {
+    const family = font.fontFamily
+      .replace(/ /g, '_')
+      .toLowerCase();
+
+    const fontData = font.data.reduce((acc, data) => {
+      const values = TOOLS.getCSSValues(data);
+      const scss =
+        `%baseline_${family}_${data.fontSize} {\n` +
+        `  margin: ${values.margin};\n` +
+        `  padding: ${values.padding};\n` +
+        `  font-size: ${data.fontSize};\n` +
+        `  line-height: ${data.lineHeight};\n` +
+        '}\n';
+
+      return `${acc}\n${scss}`;
+    }, `//font: ${family}`);
+
+    return `${result}\n${fontData}`;
+  }, '');
 
   FILE.write(
     outputFilePath,
     metrics,
     () => {
-      log(`Html placed to file: ${outputFilePath}`);
+      log(`Result is placed to file: ${outputFilePath}`);
       resolve();
       process.exit(0);
     },

@@ -65,12 +65,24 @@
 
 
         results.push(fontMetrics);
-        sendResults(results);
       });
+
+      sendResults(results);
     };
 
     function sendResults(results) {
       console.log(results);
+
+      const host = window.location.hostname;
+      const port = window.location.port;
+      fetch(`http://${host}:${port}/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(results),
+      })
+        .then(r => r.text())
+        .then(console.log)
+        .catch(() => console.error('can not send data to the local Server', host, port));
     }
   </script>
 </body>

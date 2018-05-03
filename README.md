@@ -1,17 +1,17 @@
-# __Name
+# Baseline rhythm generator
 
-__Description
+A baseline rhythm generator
 
 ## Installation
 
 ```bash
-npm i -S __npm__registry__name__
+npm i -S rhythm-baseline
 ```
 
 or
 
 ```bash
-yarn add __npm__registry__name__
+yarn add rhythm-baseline
 ```
 
 ## Example

@@ -1,10 +1,11 @@
 {
-  "name": "xxxxxxxxxxxx",
+  "name": "rhythm-baseline",
   "version": "0.1.0",
-  "description": "xxxxx",
+  "description": "A baseline rhythm generator",
   "scripts": {},
   "dependencies": {},
   "devDependencies": {
+    "babel-eslint": "^8.2.3",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.11.0",
@@ -15,9 +16,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/klimcode/xxxxxxxxxxxx.git"
+    "url": "git+https://github.com/klimcode/rhythm-baseline.git"
   },
   "bugs": {
-    "url": "https://github.com/klimcode/xxxxxxxxxxxx/issues"
+    "url": "https://github.com/klimcode/rhythm-baseline/issues"
   }
 }

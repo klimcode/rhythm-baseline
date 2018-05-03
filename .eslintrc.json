@@ -13,6 +13,7 @@
     ],
     "strict": 0,
     "key-spacing": 0,
+    "no-multi-spaces": 0,
     "no-underscore-dangle": 0,
     "no-useless-escape": 1,
     "prefer-template": 1,
@@ -29,6 +30,7 @@
     "import/prefer-default-export": 0,
     "import/extensions": 0,
     "import/no-unresolved": 0,
+    "import/no-dynamic-require": 0,
 
     "react/jsx-filename-extension": [0],
     "react/forbid-prop-types": [

@@ -14,7 +14,7 @@
   <script src="getFontMetrics.js"></script>
   <script src="webfont.js"></script>
   <script>
-    const fontFamilies = ['Open Sans', 'Droid Sans'];
+    const fontFamilies = ['Open Sans'];
     WebFont.load({
       google: {
         families: fontFamilies
@@ -30,7 +30,7 @@
       const container = document.body;
       const fonts = [
         { size: 12, line: 16 },
-        { size: 14, line: 16 },
+        { size: 14, line: 16, gap: 1 },
         { size: 16, line: 32 },
         { size: 18, line: 32 },
         { size: 20, line: 32 },
@@ -41,6 +41,7 @@
         { size: 40, line: 64 },
         { size: 48, line: 64 },
         { size: 56, line: 64 },
+        { size: 64, line: 64 },
       ];
       const results = [];
 
@@ -52,6 +53,7 @@
           const div = document.createElement('div');
           const fontSize = `${font.size}px`;
           const lineHeight = `${font.line}px`;
+          const { gap } = font;
 
           div.style.fontFamily = fontFamily;
           div.style.fontSize = fontSize;
@@ -60,7 +62,7 @@
 
           const metrics = getFontMetrics(div);
           const { offset, leading } = metrics;
-          fontMetrics.data.push({ fontSize, lineHeight, offset, leading });
+          fontMetrics.data.push({ fontSize, lineHeight, gap, offset, leading });
         });
 
 

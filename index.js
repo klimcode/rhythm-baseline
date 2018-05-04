@@ -54,30 +54,26 @@ const startServer = function startServerAndOpenBrowser(args, resolve) {
 
 const postProcess = function processInput(input, resolve) {
   log('POST message received');
-  const metrics = input.reduce((result, font) => {
-    const family = font.fontFamily
+  const scssCode = input.reduce((result, font) => { // enlist all Font Families
+    const familySanitized = font.fontFamily
       .replace(/ /g, '_')
       .toLowerCase();
 
-    const fontData = font.data.reduce((acc, data) => {
+    const fontData = font.data.reduce((acc, sizes) => { // Rules for the Font Family
+      const data = Object.assign(sizes, { familySanitized });
       const values = TOOLS.getCSSValues(data);
-      const scss =
-        `%baseline_${family}_${data.fontSize} {\n` +
-        `  margin: ${values.margin};\n` +
-        `  padding: ${values.padding};\n` +
-        `  font-size: ${data.fontSize};\n` +
-        `  line-height: ${data.lineHeight};\n` +
-        '}\n';
+      const scssRule = TOOLS.getCSSCode(values);
 
-      return `${acc}\n${scss}`;
-    }, `//font: ${family}`);
+      return `${acc}\n${scssRule}`;
+    }, `//rules for: ${font.fontFamily}`);
+
 
     return `${result}\n${fontData}`;
   }, '');
 
   FILE.write(
     outputFilePath,
-    metrics,
+    scssCode,
     () => {
       log(`Result is placed to file: ${outputFilePath}`);
       resolve();

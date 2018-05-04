@@ -60,11 +60,16 @@ const postProcess = function processInput(input, resolve) {
       .toLowerCase();
 
     const fontData = font.data.reduce((acc, sizes) => { // Rules for the Font Family
-      const data = Object.assign(sizes, { familySanitized });
+      const data = Object.assign(sizes, { family: familySanitized });
       const values = TOOLS.getCSSValues(data);
-      const scssRule = TOOLS.getCSSCode(values);
+      let scssRules = TOOLS.getCSSCode(values);
 
-      return `${acc}\n${scssRule}`;
+      if (sizes.gap) {
+        const valuesGap = TOOLS.getCSSValues(data, sizes.gap);
+        scssRules += TOOLS.getCSSCode(valuesGap, sizes.gap);
+      }
+
+      return `${acc}\n${scssRules}`;
     }, `//rules for: ${font.fontFamily}`);
 
 
